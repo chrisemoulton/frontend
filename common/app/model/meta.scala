@@ -21,7 +21,7 @@ trait MetaData extends Tags {
   def description: Option[String] = None
   def rssPath: Option[String] = None
 
-  def hasSlimHeader: Boolean = contentType == "Interactive" || section == "identity"
+  def hasSlimHeader: Boolean = contentType == "Interactive" || isImmersive || section == "identity"
 
   val shouldGoogleIndex: Boolean = true
   lazy val canonicalUrl: Option[String] = None

@@ -49,18 +49,22 @@ http://developers.theguardian.com/join-the-team.html
             @if(showAdverts) {
                 @fragments.commercial.topBanner(metaData, edition)
             }
-    
+
             @fragments.header(metaData)
-    
+
             @if(adBelowNav) {
                 @fragments.commercial.topBannerBelowNav()
             }
-    
+
             @if(showAdverts) {
                 @fragments.commercial.topBannerMobile(metaData, edition)
             }
 
             <div id="maincontent" class="js-maincontent" tabindex="0"></div>
+        } else {
+
+            @fragments.header(metaData)
+
         }
 
         @if(BreakingNewsSwitch.isSwitchedOn) {
