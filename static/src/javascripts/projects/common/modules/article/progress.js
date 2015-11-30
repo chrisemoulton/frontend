@@ -32,7 +32,7 @@ define([
         },
 
         getArticleHeight: function () {
-            idleFastdom.read(function() {
+            idleFastdom.read(function () {
                 articleHeight = $('.js-content--article').offset().height
             });
         }
