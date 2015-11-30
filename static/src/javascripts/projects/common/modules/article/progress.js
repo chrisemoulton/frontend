@@ -1,9 +1,11 @@
 define([
     'common/utils/$',
-    'common/utils/mediator'
+    'common/utils/mediator',
+    'common/utils/fastdom-idle'
 ], function (
     $,
-    mediator
+    mediator,
+    idleFastdom
 ) {
     var articleHeight;
 
@@ -22,15 +24,17 @@ define([
         },
 
         updateProgress: function () {
-            $('.js-progress__indicator').css('width', this.getProgressAsPercentage);
+            $('.js-progress__indicator').css('transform', 'translateX(' + this.getProgressAsPercentage() + '%)');
         },
 
         getProgressAsPercentage: function () {
-            return window.scrollY / articleHeight * 100 + '%';
+            return (window.scrollY / articleHeight * 100) - 100;
         },
 
         getArticleHeight: function () {
-            articleHeight = $('.js-content--article').offset().height;
+            idleFastdom.read(function() {
+                articleHeight = $('.js-content--article').offset().height
+            });
         }
     };
 });
