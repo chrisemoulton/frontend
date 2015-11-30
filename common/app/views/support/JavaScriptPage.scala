@@ -62,6 +62,14 @@ case class JavaScriptPage(metaData: MetaData)(implicit request: RequestHeader) {
         case c: Content if c.allowUserGeneratedContent => true
         case _ => false
       })),
+      ("requiresMembershipAccess", JsBoolean(metaData match {
+        case c: Content if c.requiresMembershipAccess => true
+        case _ => false
+      })),
+      ("membershipAccess", JsString(metaData match {
+        case c: Content => c.membershipAccess.getOrElse("")
+        case _ => ""
+      })),
       ("idWebAppUrl", JsString(Configuration.id.oauthUrl))
     ))
   }

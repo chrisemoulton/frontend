@@ -41,10 +41,4 @@
 
     // cloudwatch beacons
     @InlineJs(cloudwatchBeacons(metaData).body, "cloudwatchBeacons.js")
-
-    // curl
-    @Html(curl(metaData).body)
-
-    // load the enhanced JS
-    @InlineJs(bootEnhanced(metaData).body, "bootEnhanced.js")
 </script>
